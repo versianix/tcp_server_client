@@ -124,20 +124,20 @@ void *handle_request(void *arg)
 
     if (strcmp(command, "MyGet") == 0)
     {
-        printf("Cliente %s solicitou o arquivo: %s\n", client_ip, filename);
+        printf("Cliente %s solicitou o arquivo: '%s'\n", client_ip, filename);
 
         file_descriptor = open(filename, O_RDONLY);
         if (file_descriptor < 0)
         {
             perror("Erro ao abrir o arquivo");
-            snprintf(buffer, BUFFER_SIZE, "Erro ao abrir o arquivo: %s\n", strerror(errno));
+            snprintf(buffer, BUFFER_SIZE, "Erro ao abrir o arquivo: '%s'\n", strerror(errno));
             write(client_socket, buffer, strlen(buffer));
             close(client_socket);
             return NULL;
         }
 
         // Enviar uma mensagem inicial sobre o conteúdo do arquivo
-        snprintf(buffer, BUFFER_SIZE, "Conteúdo do arquivo %s:\n", filename);
+        snprintf(buffer, BUFFER_SIZE, "Conteúdo do arquivo '%s':\n", filename);
         write(client_socket, buffer, strlen(buffer));
 
         // Enviar o conteúdo do arquivo para o cliente
