@@ -2,8 +2,7 @@
 
 ## Para compilar o programa, execute no terminal:
 
-g++ -pthread -o server server.cpp
-g++ -o client client.cpp
+> make
 
 Para verificar seu funcionamento, abra dois terminais diferentes e execute ./client e ./server.
  

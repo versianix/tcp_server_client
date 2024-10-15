@@ -14,7 +14,7 @@
 #define BUFFER_SIZE 4096
 #define TIMEOUT_SECONDS 5  // Timeout de 5 segundos
 
-int main()
+int main(void)
 {
     int socket_fd, connection_status, bytes_received;
     char buffer[BUFFER_SIZE];

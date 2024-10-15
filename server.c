@@ -78,7 +78,7 @@ time_t get_last_access(const char *client_ip)
 }
 
 // Função para liberar a lista de acessos dos clientes
-void free_client_list()
+void free_client_list(void)
 {
     pthread_mutex_lock(&access_mutex);
 
@@ -191,6 +191,8 @@ void *handle_request(void *arg)
 // Função para encerrar o servidor de forma segura
 void signal_handler(int signal)
 {
+    (void) signal;
+
     printf("\nEncerrando o servidor...\n");
 
     // Liberar a lista de acessos dos clientes
@@ -198,7 +200,7 @@ void signal_handler(int signal)
     exit(0);
 }
 
-int main()
+int main(void)
 {
     int server_socket, *client_socket_ptr;
     struct sockaddr_in server_address;
